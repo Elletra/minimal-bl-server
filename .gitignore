@@ -1,0 +1,20 @@
+*.exe
+*.exe.bak
+*.dll
+*.log
+*.dat
+*.bat
+*.cs.dso
+*.sublime-project
+*.sublime-workspace
+*.code-workspace
+
+.vscode/*
+
+cache.db
+steam_appid.txt
+
+config/*.cs
+
+# Exceptions
+!Blockland.exe
