@@ -1,3 +1,13 @@
+function onDataBlockLimitExceeded()
+{
+	$DataBlocks::ExceededCount++;
+}
+
+function onDataBlocksDeleted()
+{
+	$DataBlocks::ExceededCount = 0;
+}
+
 function onStart()
 {
 	exec("./init.cs");
