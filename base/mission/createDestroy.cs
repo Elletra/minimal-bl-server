@@ -14,9 +14,6 @@ function Mission::create()
 	{
 		new Sky(Sky)
 		{
-			position = "336 136 0";
-			rotation = "1 0 0 0";
-			scale = "1 1 1";
 			materialList = "base/data/skies/sunny/sky.dml";
 		};
 
