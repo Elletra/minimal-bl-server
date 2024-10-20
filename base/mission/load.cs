@@ -1,7 +1,5 @@
 function Mission::load()
 {
-	echo("\n### Loading mission...\n");
-
 	for (%i = 0; %i < ClientGroup.getCount(); %i++)
 	{
 		ClientGroup.getObject(%i).loadMission();

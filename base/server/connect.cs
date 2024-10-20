@@ -9,22 +9,24 @@ function GameConnection::onConnectRequest(%this, %netAddress, %lanName, %blid, %
 
 	if ($Server::LAN)
 	{
-		echo ("  lan name = ", %lanName);
+		echo("  lan name = ", %lanName);
 
 		if (%lanName $= "")
 		{
 			%lanName = "Blockhead";
 		}
 	}
-	else 
+	else
 	{
-		if (%blid !$= mFloor (%blid))
+		if (%blid !$= mFloor(%blid))
 		{
 			return "CR_BADARGS";
 		}
 
 		%this.bl_id = %blid;
 		%this.setBLID("au^timoamyo7zene", %blid);
+
+		echo("  blid = ", %blid);
 	}
 
 	if (%blid != getMyBLID())
