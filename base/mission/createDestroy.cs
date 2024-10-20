@@ -17,7 +17,7 @@ function Mission::create()
 			position = "336 136 0";
 			rotation = "1 0 0 0";
 			scale = "1 1 1";
-			materialList = "base/data/skies/sunny001/sky.dml";
+			materialList = "base/data/skies/sunny/sky.dml";
 		};
 
 		new Sun(Sun)
