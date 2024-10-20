@@ -35,7 +35,8 @@ function onExit()
 		Server::destroy();
 	}
 
-	export("$Pref::*", "config/prefs.cs", false);
+	export("$Pref::Server::*", "config/prefs.cs", false);
+	export("$Pref::Net::*", "config/prefs.cs", true);
 }
 
 onStart();
