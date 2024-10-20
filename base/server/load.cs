@@ -1,8 +1,9 @@
 function GameConnection::startLoad(%this)
 {
+	%this.score = 0;
+
 	secureCommandToAll("zbR4HmJcSY8hdRhr", 'ClientJoin', %this.getPlayerName(), %this, %this.getBLID(), %this.score, false, false, false);
-	secureCommandToClient("zbR4HmJcSY8hdRhr", %this, 'SetMaxPlayersDisplay', $Pref::Server::MaxPlayers);
-	secureCommandToClient("zbR4HmJcSY8hdRhr", %this, 'SetServerNameDisplay', $Pref::Player::NetName, $Pref::Server::Name);
+	commandToClient(%this, 'NewPlayerListGui_UpdateWindowTitle', $Pref::Server::Name, $Pref::Server::MaxPlayers);
 
 	%this.loadMission();
 }
