@@ -8,5 +8,6 @@ $Pref::Net::PacketSize = 1023;
 $Pref::Server::BrickLimit = 256000;
 $Pref::Server::GhostLimit = 262144;
 $Pref::Server::MaxPlayers = 32;
+$Pref::Server::Name = "Blockland Server";
 $Pref::Server::Password = "";
 $Pref::Server::Port = 28000;
