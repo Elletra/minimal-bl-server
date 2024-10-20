@@ -1,9 +1,8 @@
-$Server::Type::Internet = 0;
-$Server::Type::LAN = 1;
-
 function Server::create(%type)
 {
 	Server::destroy();
+
+	%startTime = getRealTime();
 
 	if (%type $= "")
 	{
@@ -52,13 +51,23 @@ function Server::create(%type)
 
 	$Server::Running = true;
 
-	echo("Server is now running.");
+	Server::onCreated();
+
+	echo("\nServer created in " @ (getRealTime() - %startTime) @ " ms.");
+	echo("Server is now running.\n");
 
 	return true;
 }
 
 function Server::destroy()
 {
+	if (!$Server::Running)
+	{
+		return;
+	}
+
+	echo("\n### Destroying server...\n");
+
 	Mission::destroy();
 
 	setAllowConnections(false);
@@ -78,4 +87,16 @@ function Server::destroy()
 	purgeResources();
 
 	$Server::Running = false;
+
+	Server::onDestroyed();
+}
+
+function Server::onCreated()
+{
+	// To be used by packages.
+}
+
+function Server::onDestroyed()
+{
+	// To be used by packages.
 }

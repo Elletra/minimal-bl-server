@@ -32,8 +32,6 @@ function Mission::create()
 	ServerGroup.add(MissionGroup);
 	$InstantGroup = ServerGroup;
 
-	setManifestDirty();
-
 	while (isObject(MissionCleanup))
 	{
 		MissionCleanup.deleteAll();
@@ -43,16 +41,24 @@ function Mission::create()
 	ServerGroup.add(new SimGroup(MissionCleanup));
 	$InstantGroup = MissionCleanup;
 
+	setManifestDirty();
 	snapshotGameAssets();
 	purgeResources();
 
 	$Mission::Sequence = 1;
 	$Mission::Running = true;
+
+	Mission::onCreated();
 }
 
 function Mission::destroy()
 {
-	echo ("\n### Destroying mission...\n");
+	if (!$Mission::Running)
+	{
+		return;
+	}
+
+	echo("\n### Destroying mission...\n");
 
 	for (%i = 0; %i < ClientGroup.getCount(); %i++)
 	{
@@ -80,4 +86,16 @@ function Mission::destroy()
 	setParticleDisconnectMode(false);
 
 	$Mission::Running = false;
+
+	Mission::onDestroyed();
+}
+
+function Mission::onCreated()
+{
+	// To be used by packages.
+}
+
+function Mission::onDestroyed()
+{
+	// To be used by packages.
 }
