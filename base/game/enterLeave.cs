@@ -17,6 +17,7 @@ function GameConnection::enterGame(%this)
 	MissionCleanup.add(%camera = new Camera()
 	{
 		dataBlock = FlyingCamera;
+		client = %this;
 	});
 
 	%camera.setTransform(%position);
